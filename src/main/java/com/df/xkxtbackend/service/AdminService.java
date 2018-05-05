@@ -27,5 +27,5 @@ public interface AdminService {
 
     SubjectListResponse getAllSubject();
 
-    Subject passSubject(String subjectName, Boolean adminIsPass);
+    Subject passSubject(String subjectName, String adminIsPass);
 }

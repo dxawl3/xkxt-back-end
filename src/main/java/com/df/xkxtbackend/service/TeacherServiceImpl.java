@@ -75,9 +75,13 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public Subject agreeSelect(String subjectName, Boolean teacherIsAgree) {
+    public Subject agreeSelect(String subjectName, String teacherIsAgree) {
+        Boolean teacherIsAgreeBoolean = false;
+        if (teacherIsAgree.equals("true")) {
+            teacherIsAgreeBoolean = true;
+        }
         subject = subjectRepository.findByName(subjectName);
-        subject.setTeacherIsAgree(teacherIsAgree);
+        subject.setTeacherIsAgree(teacherIsAgreeBoolean);
         return subjectRepository.save(subject);
     }
 

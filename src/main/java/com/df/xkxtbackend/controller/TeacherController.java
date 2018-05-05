@@ -43,14 +43,14 @@ public class TeacherController {
         return teacherService.updateScore(subjectName, score);
     }
 
-    @GetMapping(value = "/get_subject")
+    @PostMapping(value = "/get_subject")
     public SubjectListResponse getSubject(@RequestParam String teacherNumber) {
         return teacherService.getSubject(teacherNumber);
     }
 
     @PostMapping(value = "/agree_select")
     public Subject agreeSelect(@RequestParam String subjectName,
-                               @RequestParam Boolean teacherIsAgree) {
+                               @RequestParam String teacherIsAgree) {
         return teacherService.agreeSelect(subjectName, teacherIsAgree);
     }
 }

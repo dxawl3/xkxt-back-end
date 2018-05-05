@@ -88,9 +88,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Subject passSubject(String subjectName, Boolean adminIsPass) {
+    public Subject passSubject(String subjectName, String adminIsPass) {
+        Boolean adminIsPassBoolean = false;
+        if (adminIsPass.equals("true")) {
+            adminIsPassBoolean = true;
+        }
         subject = subjectRepository.findByName(subjectName);
-        subject.setAdminIsPass(adminIsPass);
+        subject.setAdminIsPass(adminIsPassBoolean);
         return subjectRepository.save(subject);
     }
 }

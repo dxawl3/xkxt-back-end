@@ -15,7 +15,7 @@ public interface TeacherService {
 
     Subject updateScore(String subjectName, String score);
 
-    Subject agreeSelect(String subjectName, Boolean teacherIsAgree);
+    Subject agreeSelect(String subjectName, String teacherIsAgree);
 
     SubjectListResponse getSubject(String teacherNumber);
 }

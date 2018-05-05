@@ -66,7 +66,7 @@ public class AdminController {
 
     @PostMapping(value = "/pass_subject")
     public Subject passSubject(@RequestParam String subjectName,
-                               @RequestParam Boolean adminIsPass) {
+                               @RequestParam String adminIsPass) {
             return adminService.passSubject(subjectName, adminIsPass);
     }
 }
