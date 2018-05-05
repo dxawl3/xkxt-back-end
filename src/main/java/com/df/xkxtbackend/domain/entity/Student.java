@@ -1,8 +1,9 @@
-package com.df.xkxtbackend.domain;
+package com.df.xkxtbackend.domain.entity;
 
 import com.df.xkxtbackend.domain.model.StudentLog;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.List;
@@ -28,7 +29,8 @@ public class Student {
 
     private String score;
 
-    private List<StudentLog> studentLogs;
+    @Column(columnDefinition = "longblob")
+    private StudentLog[] studentLogs;
 
     public Student() {
     }
@@ -97,11 +99,11 @@ public class Student {
         this.score = score;
     }
 
-    public List<StudentLog> getStudentLogs() {
+    public StudentLog[] getStudentLogs() {
         return studentLogs;
     }
 
-    public void setStudentLogs(List<StudentLog> studentLogs) {
+    public void setStudentLogs(StudentLog[] studentLogs) {
         this.studentLogs = studentLogs;
     }
 }

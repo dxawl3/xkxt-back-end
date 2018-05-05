@@ -1,9 +1,9 @@
 package com.df.xkxtbackend.service;
 
-import com.df.xkxtbackend.domain.Message;
-import com.df.xkxtbackend.domain.Student;
-import com.df.xkxtbackend.domain.Subject;
-import com.df.xkxtbackend.domain.Teacher;
+import com.df.xkxtbackend.domain.entity.Message;
+import com.df.xkxtbackend.domain.entity.Student;
+import com.df.xkxtbackend.domain.entity.Subject;
+import com.df.xkxtbackend.domain.entity.Teacher;
 import com.df.xkxtbackend.domain.response.StudentListResponse;
 import com.df.xkxtbackend.domain.response.SubjectListResponse;
 import com.df.xkxtbackend.domain.response.TeacherListResponse;

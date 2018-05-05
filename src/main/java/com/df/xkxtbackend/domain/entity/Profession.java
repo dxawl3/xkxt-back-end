@@ -1,4 +1,4 @@
-package com.df.xkxtbackend.domain;
+package com.df.xkxtbackend.domain.entity;
 
 import org.springframework.stereotype.Component;
 

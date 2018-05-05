@@ -1,7 +1,7 @@
 package com.df.xkxtbackend.service;
 
-import com.df.xkxtbackend.domain.Subject;
-import com.df.xkxtbackend.domain.Teacher;
+import com.df.xkxtbackend.domain.entity.Subject;
+import com.df.xkxtbackend.domain.entity.Teacher;
 import com.df.xkxtbackend.domain.response.SubjectListResponse;
 
 public interface TeacherService {

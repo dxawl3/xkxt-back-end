@@ -1,6 +1,6 @@
 package com.df.xkxtbackend.domain.response;
 
-import com.df.xkxtbackend.domain.Teacher;
+import com.df.xkxtbackend.domain.entity.Teacher;
 
 import java.util.List;
 

@@ -1,8 +1,9 @@
 package com.df.xkxtbackend.service;
 
-import com.df.xkxtbackend.domain.Subject;
-import com.df.xkxtbackend.domain.Teacher;
+import com.df.xkxtbackend.domain.entity.Subject;
+import com.df.xkxtbackend.domain.entity.Teacher;
 import com.df.xkxtbackend.domain.response.SubjectListResponse;
+import com.df.xkxtbackend.exception.BeyondMaxException;
 import com.df.xkxtbackend.exception.IllegalParameterException;
 import com.df.xkxtbackend.repository.SubjectRepository;
 import com.df.xkxtbackend.repository.TeacherRepository;
@@ -54,6 +55,10 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Subject createSubject(Subject subject) {
+        if (subjectRepository.findAllByWhoCreate(subject.getWhoCreate()).size() >= teacherRepository.findByName(subject.getWhoCreate()).getAllowMax()) {
+            throw new BeyondMaxException("【超出发布课题上限】");
+        }
+
         return subjectRepository.save(subject);
     }
 

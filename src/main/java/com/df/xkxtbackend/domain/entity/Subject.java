@@ -1,7 +1,8 @@
-package com.df.xkxtbackend.domain;
+package com.df.xkxtbackend.domain.entity;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -20,6 +21,7 @@ public class Subject {
 
     private String score;
 
+    @Column(columnDefinition = "longblob")
     private Profession[] professions;
 
     private Boolean adminIsPass;

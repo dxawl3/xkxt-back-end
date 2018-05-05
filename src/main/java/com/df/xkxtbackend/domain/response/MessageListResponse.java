@@ -1,6 +1,6 @@
 package com.df.xkxtbackend.domain.response;
 
-import com.df.xkxtbackend.domain.Message;
+import com.df.xkxtbackend.domain.entity.Message;
 
 import java.util.List;
 

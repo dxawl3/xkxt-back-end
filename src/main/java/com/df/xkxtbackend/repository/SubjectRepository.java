@@ -1,6 +1,6 @@
 package com.df.xkxtbackend.repository;
 
-import com.df.xkxtbackend.domain.Subject;
+import com.df.xkxtbackend.domain.entity.Subject;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

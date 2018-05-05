@@ -1,6 +1,6 @@
 package com.df.xkxtbackend.domain.response;
 
-import com.df.xkxtbackend.domain.Profession;
+import com.df.xkxtbackend.domain.entity.Profession;
 
 import java.util.List;
 

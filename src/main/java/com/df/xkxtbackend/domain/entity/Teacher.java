@@ -1,4 +1,4 @@
-package com.df.xkxtbackend.domain;
+package com.df.xkxtbackend.domain.entity;
 
 import org.springframework.stereotype.Component;
 
@@ -53,5 +53,13 @@ public class Teacher {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getAllowMax() {
+        return allowMax;
+    }
+
+    public void setAllowMax(Integer allowMax) {
+        this.allowMax = allowMax;
     }
 }

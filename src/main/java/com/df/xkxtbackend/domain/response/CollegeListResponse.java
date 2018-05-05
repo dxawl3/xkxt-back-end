@@ -1,6 +1,6 @@
 package com.df.xkxtbackend.domain.response;
 
-import com.df.xkxtbackend.domain.College;
+import com.df.xkxtbackend.domain.entity.College;
 
 import java.util.List;
 

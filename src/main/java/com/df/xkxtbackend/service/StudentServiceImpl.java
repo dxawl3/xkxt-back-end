@@ -1,7 +1,7 @@
 package com.df.xkxtbackend.service;
 
-import com.df.xkxtbackend.domain.Student;
-import com.df.xkxtbackend.domain.Subject;
+import com.df.xkxtbackend.domain.entity.Student;
+import com.df.xkxtbackend.domain.entity.Subject;
 import com.df.xkxtbackend.domain.model.StudentLog;
 import com.df.xkxtbackend.domain.request.StudentLogRequest;
 import com.df.xkxtbackend.domain.response.SubjectListResponse;
@@ -11,8 +11,6 @@ import com.df.xkxtbackend.repository.SubjectRepository;
 import com.df.xkxtbackend.util.MD5EncodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -92,8 +90,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student pushLog(StudentLogRequest studentLogRequest) {
         student = studentRepository.findByStudyNumber(studentLogRequest.getStudyNumber());
-        List<StudentLog> studentLogs = student.getStudentLogs();
-        studentLogs.add(studentLogRequest.getStudentLog());
+        StudentLog[] studentLogs = student.getStudentLogs();
+        studentLogs[studentLogs.length] = studentLogRequest.getStudentLog();
         student.setStudentLogs(studentLogs);
         return studentRepository.save(student);
     }

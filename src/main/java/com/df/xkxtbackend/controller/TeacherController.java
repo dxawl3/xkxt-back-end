@@ -1,7 +1,7 @@
 package com.df.xkxtbackend.controller;
 
-import com.df.xkxtbackend.domain.Subject;
-import com.df.xkxtbackend.domain.Teacher;
+import com.df.xkxtbackend.domain.entity.Subject;
+import com.df.xkxtbackend.domain.entity.Teacher;
 import com.df.xkxtbackend.domain.response.SubjectListResponse;
 import com.df.xkxtbackend.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
