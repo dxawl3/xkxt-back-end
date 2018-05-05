@@ -1,12 +1,11 @@
 package com.df.xkxtbackend.controller;
 
+import com.df.xkxtbackend.domain.Subject;
 import com.df.xkxtbackend.domain.Teacher;
+import com.df.xkxtbackend.domain.response.SubjectListResponse;
 import com.df.xkxtbackend.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/teacher")
@@ -26,5 +25,32 @@ public class TeacherController {
                                   @RequestParam String oldPassword,
                                   @RequestParam String newPassword) {
         return teacherService.changePassword(teacherNumber, oldPassword, newPassword);
+    }
+
+    @PostMapping(value = "/create_subject")
+    public Subject createSubject(@RequestBody Subject subject) {
+        return teacherService.createSubject(subject);
+    }
+
+    @PostMapping(value = "/delete_subject")
+    public void deleteSubject(@RequestParam String subjectName) {
+        teacherService.deleteSubject(subjectName);
+    }
+
+    @PostMapping(value = "/update_score")
+    public Subject updateScore(@RequestParam String subjectName,
+                               @RequestParam String score) {
+        return teacherService.updateScore(subjectName, score);
+    }
+
+    @GetMapping(value = "/get_subject")
+    public SubjectListResponse getSubject(@RequestParam String teacherNumber) {
+        return teacherService.getSubject(teacherNumber);
+    }
+
+    @PostMapping(value = "/agree_select")
+    public Subject agreeSelect(@RequestParam String subjectName,
+                               @RequestParam Boolean teacherIsAgree) {
+        return teacherService.agreeSelect(subjectName, teacherIsAgree);
     }
 }

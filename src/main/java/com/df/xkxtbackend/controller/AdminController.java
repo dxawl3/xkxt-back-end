@@ -40,7 +40,7 @@ public class AdminController {
     }
 
     @PostMapping(value = "/delete_teacher")
-    public void deleteTeacher(@RequestParam String teacherNumber){
+    public void deleteTeacher(@RequestParam String teacherNumber) {
         adminService.deleteTeacher(teacherNumber);
     }
 
@@ -64,8 +64,9 @@ public class AdminController {
         return adminService.getAllSubject();
     }
 
-    @PostMapping(value = "/manage_subject")
-    public Subject manageSubject(@RequestBody Subject subject) {
-        return adminService.manageSubject(subject);
+    @PostMapping(value = "/pass_subject")
+    public Subject passSubject(@RequestParam String subjectName,
+                               @RequestParam Boolean adminIsPass) {
+            return adminService.passSubject(subjectName, adminIsPass);
     }
 }

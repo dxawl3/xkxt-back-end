@@ -31,8 +31,10 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     private SubjectRepository subjectRepository;
 
-    @Override
+    @Autowired
+    private Subject subject;
 
+    @Override
     public void login(String adminUsername, String password) {
         if (!adminUsername.equals("admin")) {
             throw new IllegalParameterException("【用户名不存在】");
@@ -86,7 +88,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Subject manageSubject(Subject subject) {
+    public Subject passSubject(String subjectName, Boolean adminIsPass) {
+        subject = subjectRepository.findByName(subjectName);
+        subject.setAdminIsPass(adminIsPass);
         return subjectRepository.save(subject);
     }
 }
