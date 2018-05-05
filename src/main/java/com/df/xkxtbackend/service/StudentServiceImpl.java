@@ -4,6 +4,7 @@ import com.df.xkxtbackend.domain.Student;
 import com.df.xkxtbackend.domain.Subject;
 import com.df.xkxtbackend.domain.model.StudentLog;
 import com.df.xkxtbackend.domain.request.StudentLogRequest;
+import com.df.xkxtbackend.domain.response.SubjectListResponse;
 import com.df.xkxtbackend.exception.IllegalParameterException;
 import com.df.xkxtbackend.repository.StudentRepository;
 import com.df.xkxtbackend.repository.SubjectRepository;
@@ -68,6 +69,24 @@ public class StudentServiceImpl implements StudentService {
         subjectRepository.save(subject);
 
         return subject;
+    }
+
+    @Override
+    public Subject changeSelectedSubject(String studyNumber, String oldSubjectName, String newSubjectName) {
+        // 更新学生表
+        student = studentRepository.findByStudyNumber(studyNumber);
+        student.setSelectedSubject(newSubjectName);
+        studentRepository.save(student);
+
+        // 更新课题表
+        subject = subjectRepository.findByName(oldSubjectName);
+        subject.setSelectBy(null);
+        return subjectRepository.save(subject);
+    }
+
+    @Override
+    public SubjectListResponse getSubject() {
+        return new SubjectListResponse(subjectRepository.findAllByAdminIsPassAndSelectBy(true, null));
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.df.xkxtbackend.controller;
 import com.df.xkxtbackend.domain.Student;
 import com.df.xkxtbackend.domain.Subject;
 import com.df.xkxtbackend.domain.request.StudentLogRequest;
+import com.df.xkxtbackend.domain.response.SubjectListResponse;
 import com.df.xkxtbackend.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,18 @@ public class StudentController {
     public Subject selectSubject(@RequestParam String studyNumber,
                                  @RequestParam String subjectName) {
         return studentService.selectSubject(studyNumber, subjectName);
+    }
+
+    @PostMapping(value = "/change_selected_subject")
+    public Subject changeSelectedSubject(@RequestParam String studyNumber,
+                                         @RequestParam String oldSubjectName,
+                                         @RequestParam String newSubjectName) {
+        return studentService.changeSelectedSubject(studyNumber, oldSubjectName, newSubjectName);
+    }
+
+    @GetMapping(value = "/get_subject")
+    public SubjectListResponse getSubject() {
+        return studentService.getSubject();
     }
 
     @PostMapping(value = "/push_log")

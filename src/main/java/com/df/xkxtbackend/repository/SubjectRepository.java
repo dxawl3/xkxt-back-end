@@ -9,4 +9,6 @@ public interface SubjectRepository extends JpaRepository<Subject, String> {
     Subject findByName(String name);
 
     List<Subject> findAllByWhoCreate(String whoCreate);
+
+    List<Subject> findAllByAdminIsPassAndSelectBy(Boolean adminIsPass, String selectBy);
 }
