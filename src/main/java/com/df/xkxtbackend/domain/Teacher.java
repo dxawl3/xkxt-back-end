@@ -14,9 +14,11 @@ public class Teacher {
 
     private String name;
 
+    private String password;
+
     private String college;
 
-    private String password;
+    private Integer allowMax;
 
     public Teacher() {
     }

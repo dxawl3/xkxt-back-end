@@ -1,9 +1,11 @@
 package com.df.xkxtbackend.domain;
 
+import com.df.xkxtbackend.domain.model.StudentLog;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 @Component
@@ -14,13 +16,19 @@ public class Student {
 
     private String name;
 
+    private String password;
+
+    private String profession;
+
     private String classes;
 
     private String selectedSubject;
 
-    private String password;
+    private Boolean teacherIsAgree;
 
-    private String grade;
+    private String score;
+
+    private List<StudentLog> studentLogs;
 
     public Student() {
     }
@@ -41,6 +49,22 @@ public class Student {
         this.name = name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
     public String getClasses() {
         return classes;
     }
@@ -57,19 +81,27 @@ public class Student {
         this.selectedSubject = selectedSubject;
     }
 
-    public String getPassword() {
-        return password;
+    public Boolean getTeacherIsAgree() {
+        return teacherIsAgree;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setTeacherIsAgree(Boolean teacherIsAgree) {
+        this.teacherIsAgree = teacherIsAgree;
     }
 
-    public String getGrade() {
-        return grade;
+    public String getScore() {
+        return score;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public List<StudentLog> getStudentLogs() {
+        return studentLogs;
+    }
+
+    public void setStudentLogs(List<StudentLog> studentLogs) {
+        this.studentLogs = studentLogs;
     }
 }

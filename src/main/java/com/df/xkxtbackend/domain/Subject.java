@@ -18,7 +18,15 @@ public class Subject {
 
     private String info;
 
-    private String grade;
+    private String score;
+
+    private Profession[] professions;
+
+    private Boolean adminIsPass;
+
+    private Boolean teacherIsAgree;
+
+    private String adminNotPassInfo;
 
     public Subject() {
     }
@@ -55,11 +63,43 @@ public class Subject {
         this.info = info;
     }
 
-    public String getGrade() {
-        return grade;
+    public String getScore() {
+        return score;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public Profession[] getProfessions() {
+        return professions;
+    }
+
+    public void setProfessions(Profession[] professions) {
+        this.professions = professions;
+    }
+
+    public Boolean getAdminIsPass() {
+        return adminIsPass;
+    }
+
+    public void setAdminIsPass(Boolean adminIsPass) {
+        this.adminIsPass = adminIsPass;
+    }
+
+    public Boolean getTeacherIsAgree() {
+        return teacherIsAgree;
+    }
+
+    public void setTeacherIsAgree(Boolean teacherIsAgree) {
+        this.teacherIsAgree = teacherIsAgree;
+    }
+
+    public String getAdminNotPassInfo() {
+        return adminNotPassInfo;
+    }
+
+    public void setAdminNotPassInfo(String adminNotPassInfo) {
+        this.adminNotPassInfo = adminNotPassInfo;
     }
 }
