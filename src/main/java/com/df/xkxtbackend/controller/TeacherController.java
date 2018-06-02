@@ -44,8 +44,8 @@ public class TeacherController {
     }
 
     @PostMapping(value = "/get_subject")
-    public SubjectListResponse getSubject(@RequestParam String teacherNumber) {
-        return teacherService.getSubject(teacherNumber);
+    public SubjectListResponse getSubject(@RequestParam String teacherName) {
+        return teacherService.getSubject(teacherName);
     }
 
     @PostMapping(value = "/agree_select")

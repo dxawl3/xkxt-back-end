@@ -2,6 +2,7 @@ package com.df.xkxtbackend.controller;
 
 import com.df.xkxtbackend.domain.entity.Student;
 import com.df.xkxtbackend.domain.entity.Subject;
+import com.df.xkxtbackend.domain.model.StudentLog;
 import com.df.xkxtbackend.domain.request.StudentLogRequest;
 import com.df.xkxtbackend.domain.response.SubjectListResponse;
 import com.df.xkxtbackend.service.StudentService;
@@ -49,5 +50,10 @@ public class StudentController {
     @PostMapping(value = "/push_log")
     public Student pushLog(@RequestBody StudentLogRequest studentLogRequest) {
         return studentService.pushLog(studentLogRequest);
+    }
+
+    @GetMapping(value = "/get_logs")
+    public StudentLog[] getLogs(@RequestParam String name) {
+        return studentService.getLogs(name);
     }
 }

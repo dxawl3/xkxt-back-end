@@ -21,8 +21,8 @@ public class Subject {
 
     private String score;
 
-    @Column(columnDefinition = "longblob")
-    private Profession[] professions;
+//    @Column(columnDefinition = "longblob")
+    private String profession;
 
     private Boolean adminIsPass;
 
@@ -73,12 +73,12 @@ public class Subject {
         this.score = score;
     }
 
-    public Profession[] getProfessions() {
-        return professions;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setProfessions(Profession[] professions) {
-        this.professions = professions;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
     public Boolean getAdminIsPass() {

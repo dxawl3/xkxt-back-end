@@ -2,13 +2,16 @@ package com.df.xkxtbackend.domain.model;
 
 import java.util.Date;
 
-public class StudentLog {
+public class StudentLog implements java.io.Serializable {
 
     private String title;
 
     private Date date;
 
     private String content;
+
+    public StudentLog() {
+    }
 
     public StudentLog(String title, Date date, String content) {
         this.title = title;

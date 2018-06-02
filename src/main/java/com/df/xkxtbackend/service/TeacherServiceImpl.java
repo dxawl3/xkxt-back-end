@@ -1,10 +1,12 @@
 package com.df.xkxtbackend.service;
 
+import com.df.xkxtbackend.domain.entity.Student;
 import com.df.xkxtbackend.domain.entity.Subject;
 import com.df.xkxtbackend.domain.entity.Teacher;
 import com.df.xkxtbackend.domain.response.SubjectListResponse;
 import com.df.xkxtbackend.exception.BeyondMaxException;
 import com.df.xkxtbackend.exception.IllegalParameterException;
+import com.df.xkxtbackend.repository.StudentRepository;
 import com.df.xkxtbackend.repository.SubjectRepository;
 import com.df.xkxtbackend.repository.TeacherRepository;
 import com.df.xkxtbackend.util.MD5EncodeUtil;
@@ -22,6 +24,12 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Autowired
     private SubjectRepository subjectRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private Student student;
 
     @Autowired
     private Subject subject;
@@ -69,6 +77,10 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Subject updateScore(String subjectName, String score) {
+        student = studentRepository.findBySelectedSubject(subjectName);
+        student.setScore(score);
+        studentRepository.save(student);
+
         subject = subjectRepository.findByName(subjectName);
         subject.setScore(score);
         return subjectRepository.save(subject);
@@ -80,13 +92,17 @@ public class TeacherServiceImpl implements TeacherService {
         if (teacherIsAgree.equals("true")) {
             teacherIsAgreeBoolean = true;
         }
+        student = studentRepository.findBySelectedSubject(subjectName);
+        student.setTeacherIsAgree(teacherIsAgreeBoolean);
+        studentRepository.save(student);
+
         subject = subjectRepository.findByName(subjectName);
         subject.setTeacherIsAgree(teacherIsAgreeBoolean);
         return subjectRepository.save(subject);
     }
 
     @Override
-    public SubjectListResponse getSubject(String teacherNumber) {
-        return new SubjectListResponse(subjectRepository.findAllByWhoCreate(teacherNumber));
+    public SubjectListResponse getSubject(String teacherName) {
+        return new SubjectListResponse(subjectRepository.findAllByWhoCreate(teacherName));
     }
 }

@@ -17,5 +17,5 @@ public interface TeacherService {
 
     Subject agreeSelect(String subjectName, String teacherIsAgree);
 
-    SubjectListResponse getSubject(String teacherNumber);
+    SubjectListResponse getSubject(String teacherName);
 }

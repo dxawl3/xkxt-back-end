@@ -12,6 +12,10 @@ import com.df.xkxtbackend.util.MD5EncodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Service
 public class StudentServiceImpl implements StudentService {
 
@@ -79,6 +83,9 @@ public class StudentServiceImpl implements StudentService {
         // 更新课题表
         subject = subjectRepository.findByName(oldSubjectName);
         subject.setSelectBy(null);
+        subjectRepository.save(subject);
+        subject = subjectRepository.findByName(newSubjectName);
+        subject.setSelectBy(student.getName());
         return subjectRepository.save(subject);
     }
 
@@ -90,9 +97,27 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student pushLog(StudentLogRequest studentLogRequest) {
         student = studentRepository.findByStudyNumber(studentLogRequest.getStudyNumber());
-        StudentLog[] studentLogs = student.getStudentLogs();
-        studentLogs[studentLogs.length] = studentLogRequest.getStudentLog();
+        List<StudentLog> tempStudentLogs;
+        if (student.getStudentLogs() != null) {
+            tempStudentLogs = new ArrayList<>(Arrays.asList(student.getStudentLogs()));
+        } else {
+            tempStudentLogs = new ArrayList<>();
+        }
+        tempStudentLogs.add(studentLogRequest.getStudentLog());
+//        StudentLog[] studentLogs = (StudentLog[]) tempStudentLogs.toArray();
+        StudentLog[] studentLogs = new StudentLog[tempStudentLogs.size()];
+        for (int i = 0; i < tempStudentLogs.size(); i++) {
+            studentLogs[i] = tempStudentLogs.get(i);
+        }
+
+//        StudentLog[] studentLogs = student.getStudentLogs();
+//        studentLogs[studentLogs.length] = studentLogRequest.getStudentLog();
         student.setStudentLogs(studentLogs);
         return studentRepository.save(student);
+    }
+
+    @Override
+    public StudentLog[] getLogs(String name) {
+        return studentRepository.findByName(name).getStudentLogs();
     }
 }
